@@ -1,9 +1,11 @@
+import { Element as PolymerElement } from '@polymer/polymer/polymer-element';
 import {
     Options,
 } from './types';
 
 import treeify from './treeify';
 import {
+    addCSS,
     writeCSS,
 } from './css';
 
@@ -28,6 +30,45 @@ export function run(selector: string, options?: Partial<Options>, doc: HTMLDocum
     }
 
     writeCSS(options2, doc);
+}
+export function define(name: string): void{
+    if (!name.match(/^[a-z].*-[^-]+$/)){
+        console.error('Invalid element name.');
+        return;
+    }
+    customElements.define(name, MyApp);
+    /*const elms = doc.querySelectorAll(selector);
+    for (let i = 0; i < elms.length; i++){
+        treeify(elms[i] as HTMLElement, options2);
+    }*/
+
+    // writeCSS(options2, doc);
+}
+
+export class MyApp extends PolymerElement {
+    elm: HTMLElement;
+    constructor(){
+        super();
+        this.elm = super.attachShadow({mode: 'open'});
+        const options = {
+            noBranchClass: 'tree-no-branch',
+            label: `label`,
+            labelMain: `label-main`,
+            labelNonRoot: `label-non-root`,
+            labelLastChild: `label-last-child`,
+            labelLine: `label-line`,
+            children: `children`,
+            liLastChild: `tree-li-last-child`,
+            liNoForwardSibling: `label-no-forward-sibling`,
+            indentTree: '1em',
+            indentChildren: '3em',
+            labelTopPadding: '0.2em',
+        };
+        this.elm.textContent = 'Root Node';
+        this.elm.appendChild(super.children[0]);
+        treeify(this.elm as HTMLElement, options);
+        this.elm.appendChild(addCSS(options));
+    }
 }
 
 /**

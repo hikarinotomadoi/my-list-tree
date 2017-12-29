@@ -46,6 +46,7 @@
   "repository": "git@github.com:uhyo/my-list-tree.git",
   "license": "MIT",
   "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
     "tslib": "^1.7.1"
   }
 }

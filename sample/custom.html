@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Sample HTML</title>
+    <meta charset="UTF-8">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+  </head>
+  <body>
+    <h1>Sample document</h1>
+    <tree-o>
+      <ul>
+        <li>Child 1
+          <ul>
+            <li>
+              <div>I'm grandson!<br>Oh my god</div>
+              <ul>
+                <li>Hidden child</li>
+              </ul>
+            </li>
+            <li>Who am I?</li>
+          </ul>
+        </li>
+        <li>
+          Child 2
+        </li>
+        <li class="tree-no-branch">
+          ← Here is something!
+        </li>
+        <li>
+          Child 3
+          <ul>
+            <li>oh!</li>
+            <li class="tree-no-branch">
+              &#x2196; This is something!
+            </li>
+          </ul>
+        </li>
+        <li>
+          Child 4
+          <ul>
+            <li class="tree-no-branch">It has only</li>
+            <li class="tree-no-branch">no-branch children</li>
+          </ul>
+        </li>
+        <li>
+          Child 5
+          <ul>
+            <li class="tree-no-branch">Some no-branch</li>
+            <li class="tree-no-branch">children and</li>
+            <li>normal child at bottom</li>
+          </ul>
+        </li>
+      </ul>
+    </tree-o>
+    <script src="../dist/my-list-tree.js"></script>
+    <script>
+      MyListTree.define('tree-o');
+    </script>
+  </body>
+</html>

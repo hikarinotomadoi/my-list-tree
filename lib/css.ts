@@ -12,6 +12,13 @@ export function writeCSS(options: Options, doc: HTMLDocument): void{
     doc.head.appendChild(style);
 }
 
+export function addCSS(options: Options): HTMLStyleElement{
+    const css = cssText(options);
+    const style = document.createElement('style');
+    style.textContent = css;
+    return style;
+}
+
 function cssText(options: Options): string{
     return `
 div.${options.children} {
